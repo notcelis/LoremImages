@@ -6,18 +6,19 @@ function get_sizes(img){
 
 $(document).ready(function(){
 
-    var imgItems = $('input#number').val(); // Numero de Slides
+    var imgItems = $('input#number').val(); 
     var imgPos = 1;
 
-    $('.slider li').hide(); // Ocultanos todos los slides
-    $('.slider li:first').show(); // Mostramos el primer slide
+    $('.slider li').hide(); 
+    $('.slider li:first').show();
     
     $('.right span').click(nextSlider);
     $('.left span').click(prevSlider);
     
     setInterval(function(){
 		nextSlider();
-	}, 4000);
+        },
+        10000);
 
 
     function nextSlider(){
@@ -30,8 +31,8 @@ $(document).ready(function(){
 		$('.pagination li').css({'color': '#858585'});
 		$('.pagination li:nth-child(' + imgPos +')').css({'color': '#CD6E2E'});
 
-		$('.slider li').hide(); // Ocultamos todos los slides
-		$('.slider li:nth-child('+ imgPos +')').fadeIn(); // Mostramos el Slide seleccionado
+		$('.slider li').hide(); 
+		$('.slider li:nth-child('+ imgPos +')').fadeIn();
 
 	}
 
@@ -70,6 +71,7 @@ $(document).ready(function(){
               },
             dataType: 'json',
             success: function(response){
+
                 let animations = [
                     "data-aos='zoom-in'",
                     "data-aos='zoom-in-up'",

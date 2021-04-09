@@ -19,11 +19,6 @@
     <script>
         AOS.init();
     </script>
-    
-{% endblock %}
-
-{% block contenido %}
-
     <div class="slideshow">
 
         <ul class="slider">
@@ -34,13 +29,26 @@
             {% endfor %}
         </ul>
         <div class="left">
-            <span class="fa fa-chevron-left"></span>
+            <span class="fa fa-chevron-left">
+                <p class="text-white">
+                    Left
+                </p>
+            </span>
+        </div>
+        <div class="right">
+            <span class="fa fa-chevron-right">
+                <p class="text-white">
+                    right
+                </p>
+            </span>
         </div>
 
-        <div class="right">
-            <span class="fa fa-chevron-right"></span>
-        </div>
     </div>
+{% endblock %}
+
+{% block contenido %}
+
+    
 
     <div class="container">
             <div class="row align-items-center justify-content-center " style="height: 150px; background-color: #212121; border-radius: 1%;">
