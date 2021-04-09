@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+{% endblock %}
+
 {% block title %} {{ title }} {% endblock %}
 
 {% block css %}
@@ -11,7 +15,7 @@
 {% block js %}
     <script src="{{ url_for('static', filename='js/code.js' ) }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 {% endblock %}
 
@@ -24,21 +28,21 @@
         <ul class="slider">
             {% for i in range(0,len) %}
                 <li>
-                    <img src="{{ img[i] }}" alt="">
+                    <img src="{{ img[i] }}" alt="" class="center">
                 </li>
             {% endfor %}
         </ul>
         <div class="left">
-            <span class="fa fa-chevron-left">
-                <p class="text-white">
-                    Left
+            <span>
+                <p>
+                    <i class='far'>&#xf191;</i>
                 </p>
             </span>
         </div>
         <div class="right">
-            <span class="fa fa-chevron-right">
-                <p class="text-white">
-                    right
+            <span>
+                <p>
+                    <i class='far'>&#xf152;</i>
                 </p>
             </span>
         </div>
@@ -52,12 +56,20 @@
 
     <div class="container">
             <div class="row align-items-center justify-content-center " style="height: 150px; background-color: #212121; border-radius: 1%;">
+
                 <div class="col-2 p-3 m-3 d-flex flex-wrap justify-content-around " style="background-color: #616161;"> 
                         <p  class="font-weight-normal text-white">
                             Número
                         </p>
                         <input class="form-control" id="number"  type="number" step="1" style="margin-left: auto; margin-right: auto;"  value="3">
                 </div>
+                <div class="col-2 p-3 m-3 d-flex flex-wrap justify-content-around " style="background-color: #616161;">
+                    <p class="font-weight-normal text-white">
+                        Imágenes
+                    </p>
+                    <input class="form-control" id="refresh"  type="button" style="margin-left: auto; margin-right: auto;"  value="Refrescar">
+                </div>
+                
                 
             </div>
     </div>
@@ -68,7 +80,7 @@
             {% for i in range(0,len) %}
                 <div id='box' class="d-block" data-aos="zoom-in">
                     <a href="{{ img[i] }}">
-                        <img src="{{ img[i] }}" loading="lazy">
+                        <img src="{{ img[i] }}" loading="lazy" class="center">
                     </a>
                     <div class="container" style="background-color: black; height: 30px;">
                         <p class="font-weight-normal text-white text-center">

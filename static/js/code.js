@@ -3,60 +3,82 @@ function get_sizes(img){
     size = 'Ancho:'+size.split('/')[3]+' Alto:' + size.split('/')[4];
     return size;
 }
+function change_slide(obj, imgItems, imgPos, slider){
+    let direction = 1;
+    
+    if($(obj).parent().attr('class') == 'left'){
+        direction = -1;
+    }
+    switch(direction){
+        case 1:
+            if( imgPos >= imgItems){
+                imgPos = 1;
+            }else{
+                imgPos++;
+            }
+            break;
+        case -1:
+            if( imgPos <= 1){
+                imgPos = imgItems;
+            }else{
+                imgPos--;
+            }
+    }
+    slider.hide();
+    $('.slider li:nth-child('+ imgPos +')').fadeIn(); 
+    return imgPos;
+}
 
 $(document).ready(function(){
 
+    /*
+    *********************
+            Slider
+    *********************
+    */
     var imgItems = $('input#number').val(); 
     var imgPos = 1;
-
-    $('.slider li').hide(); 
+    $('div.left').hide();
+    var slides =  $('.slider li');
+    slides.hide(); 
     $('.slider li:first').show();
     
-    $('.right span').click(nextSlider);
-    $('.left span').click(prevSlider);
-    
-    setInterval(function(){
-		nextSlider();
-        },
-        10000);
-
-
-    function nextSlider(){
-		if( imgPos >= imgItems){
-            imgPos = 1;
+    $('span').click(function(){
+        imgPos = change_slide(
+            $(this),
+            imgItems,
+            imgPos,
+            slides,
+        );
+        if(imgPos == imgItems){
+            $('div.right').hide();
         }else{
-            imgPos++;
+            $('div.right').show();
         }
+        if(imgPos == 1){
+            $('div.left').hide();
+        }else{
+            $('div.left').show();
+        }
+    });
 
-		$('.pagination li').css({'color': '#858585'});
-		$('.pagination li:nth-child(' + imgPos +')').css({'color': '#CD6E2E'});
-
-		$('.slider li').hide(); 
-		$('.slider li:nth-child('+ imgPos +')').fadeIn();
-
-	}
-
-	function prevSlider(){
-		if( imgPos <= 1){imgPos = imgItems;} 
-		else {imgPos--;}
-
-		$('.pagination li').css({'color': '#858585'});
-		$('.pagination li:nth-child(' + imgPos +')').css({'color': '#CD6E2E'});
-
-		$('.slider li').hide(); // Ocultamos todos los slides
-		$('.slider li:nth-child('+ imgPos +')').fadeIn(); // Mostramos el Slide seleccionado
-	}
-
-
-
-
-
+    /*
+    *********************
+            Slider
+    *********************
+    */
+    /*
+    *********************
+            Library
+    *********************
+    */
 
     $('input#number').change(function(){
         imgItems = $(this).val()
-        $('ul.slider').empty('slow');
+        slides =  $('.slider li');
+        slides.empty();
 
-        $('#imgs').empty('slow');        
+        $('#imgs').empty();        
         let num = $(this).val();
         if(num >10){
             num = 10
@@ -99,18 +121,12 @@ $(document).ready(function(){
                                 </p>
                             </div>
                         </div>
-                        `)
-                        .show('slow');
-
-                    $('ul.slider').append(`
-                        <li>
-                            <img src="`+ url +`" alt="">
-                        </li>
-                    `)
-                    .show('slow');
-
-
-               }
+                        `);
+                    let this_slide =  $('.slider li').eq(i);
+                    this_slide.append(`
+                        <img src='`+ url +`' alt=''>
+                        `);
+                }
             },
             error: function(error){
                 console.log('not ok', error);
@@ -122,4 +138,9 @@ $(document).ready(function(){
     $('#refresh').click(function(){
         $('input#number').trigger('change');
     });
+    /*
+    *********************
+            Library
+    *********************
+    */
 });
