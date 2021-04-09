@@ -1,28 +1,72 @@
 html {
     height: auto;
+    width: auto;
 }
 body{
-    background-color: gray;
-    height: auto;
+    background-color: #111111;
     padding: 25px;
-    margin: auto;
     min-width: 300px;
 }
-#box {
+#box{
     width: 350px;
     height: 350px;
-    margin: auto;
     padding: 25px;
- }
- 
-#box img {
+}
+#box img{
     height: 100%;
     width: 100%;
     border: 5px solid black;
 }
 footer{
-    height: auto;
+    border-radius: 10%;
 }
 div .col-2{
     border-radius: 10%;
+}
+
+.slideshow{
+    width: auto;
+    height: 400px;
+    justify-content: left;
+    position: relative;
+
+}
+.slider img{
+	height: 100%;
+    width: 100%;
+}
+.slider li{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+ul{
+    display: block;
+    list-style-type: disc;
+    width: 110%;
+    margin-block-start: -25px;
+    margin-block-end: 0px;
+    margin-inline-start: -25px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+
+@media screen and (max-width: auto){
+	.slider .caption p{
+		display: none;
+	}
+
+	.slider .caption h1{
+		font-size: 35px;
+	}
+
+	.left, .right{
+		font-size: 30px;
+	}
+
+	.slider li img{
+		width: 600px;
+	}
+
 }
