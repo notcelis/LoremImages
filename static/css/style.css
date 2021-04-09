@@ -1,0 +1,28 @@
+html {
+    height: auto;
+}
+body{
+    background-color: gray;
+    height: auto;
+    padding: 25px;
+    margin: auto;
+    min-width: 300px;
+}
+#box {
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    padding: 25px;
+ }
+ 
+#box img {
+    height: 100%;
+    width: 100%;
+    border: 5px solid black;
+}
+footer{
+    height: auto;
+}
+div .col-2{
+    border-radius: 10%;
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='js/code.js' ) }}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+
+{% endblock %}
+
+{% block contenido %}
+    <script>
+        AOS.init();
+    </script>
+
+    <div class="container">
+            <div class="row align-items-center justify-content-center " style="height: 150px; background-color: black;">
+                <div class="col-2 bg-success p-3 m-3 d-flex flex-wrap justify-content-around ">
+                        <p  class="font-weight-normal">
+                            Número
+                        </p>
+                        <input class="form-control" id="number"  type="number" step="1" style="margin-left: auto; margin-right: auto;"  value="3">
+                </div>
+                
+            </div>
+    </div>
+    
+
+    <div class="container d-flex flex-wrap bg-dark h-100">
+        <div id="imgs" class="col h-100 p-3 d-flex flex-wrap justify-content-around">
+            {% for i in range(0,len) %}
+                <div id='box' class="d-block" data-aos="zoom-in">
+                    <a href="{{ img[i] }}">
+                        <img src="{{ img[i] }}" loading="lazy">
+                    </a>
+                    <div class="container" style="background-color: black; height: 30px;">
+                        <p class="font-weight-normal text-white text-center">
+                            {{ sizes[i] }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block footer %}
+    <div class="container h-100 bg-dark">
+        <div class="row align-items-center justify-content-center m-1">
+            <div class="col-2 bg-success p-3 m-3 d-flex flex-wrap justify-content-around ">
+                <p class="font-weight-normal">
+                    Imágenes
+                </p>
+                <input class="form-control" id="refresh"  type="button" style="margin-left: auto; margin-right: auto;"  value="Refrescar">
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
