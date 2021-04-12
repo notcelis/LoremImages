@@ -1,36 +1,25 @@
 {% extends 'base.html' %}
-
 {% block meta %}
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 {% endblock %}
-
 {% block title %} {{ title }} {% endblock %}
-
 {% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-{% endblock %}
 
+{% endblock %}
 {% block js %}
     <script src="{{ url_for('static', filename='js/code.js' ) }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
+
+
 {% endblock %}
-
 {% block header%}
-    <script>
-        AOS.init();
-    </script>
     <div class="slideshow">
-
         <ul class="slider">
-            {% for i in range(0,len) %}
-                <li>
-                    <img src="{{ img[i] }}" alt="" class="center">
-                </li>
-            {% endfor %}
         </ul>
         <div class="left">
             <span>
@@ -46,65 +35,38 @@
                 </p>
             </span>
         </div>
-
     </div>
+    <script>
+        AOS.init();
+    </script>
 {% endblock %}
-
 {% block contenido %}
 
-    
 
-    <div class="container">
-            <div class="row align-items-center justify-content-center " style="height: 150px; background-color: #212121; border-radius: 1%;">
 
-                <div class="col-2 p-3 m-3 d-flex flex-wrap justify-content-around " style="background-color: #616161;"> 
-                        <p  class="font-weight-normal text-white">
-                            Número
-                        </p>
-                        <input class="form-control" id="number"  type="number" step="1" style="margin-left: auto; margin-right: auto;"  value="3">
-                </div>
-                <div class="col-2 p-3 m-3 d-flex flex-wrap justify-content-around " style="background-color: #616161;">
-                    <p class="font-weight-normal text-white">
-                        Imágenes
-                    </p>
-                    <input class="form-control" id="refresh"  type="button" style="margin-left: auto; margin-right: auto;"  value="Refrescar">
-                </div>
-                
-                
+    <div class="container " data-aos="fade-up">
+        <div class="row align-items-center justify-content-center " style="height: 150px; background: linear-gradient(#FFFFFF, #000000);	 border-radius: 1%;">
+            <div class="col-2 p-3 m-3 d-flex flex-wrap justify-content-around " > 
+
+                    <input class="form-control" id="number"  type="number" step="1" value="3">
             </div>
+                <button><i class='fas fa-redo'></i>
+
+        </div>
+        <div  class="container d-flex flex-wrap " >
+            <div id="imgs" class="col h-100 p-3 d-flex flex-wrap justify-content-around"> 
+            </div>
+            
+        </div>
+        <div id="copyright" class="text-ligth d-flex justify-content-end">
+            NotCelis&copy; 2021 - Celis Vargas Isaac - puked code
+        </div>
+
     </div>
     
 
-    <div class="container d-flex flex-wrap h-100" style="border-radius: 1%; background-color: #313131;">
-        <div id="imgs" class="col h-100 p-3 d-flex flex-wrap justify-content-around">
-            {% for i in range(0,len) %}
-                <div id='box' class="d-block" data-aos="zoom-in">
-                    <a href="{{ img[i] }}">
-                        <img src="{{ img[i] }}" loading="lazy" class="center">
-                    </a>
-                    <div class="container" style="background-color: black; height: 30px;">
-                        <p class="font-weight-normal text-white text-center">
-                            {{ sizes[i] }}
-                        </p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-    
 {% endblock %}
-
 {% block footer %}
-    <div class="container h-100 " style=" border-radius: 1%; background-color: #212121;">
-        <div class="row align-items-center justify-content-center m-1">
-            <div class="col-2 p-3 m-3 d-flex flex-wrap justify-content-around " style="background-color: #616161;">
-                <p class="font-weight-normal text-white">
-                    Imágenes
-                </p>
-                <input class="form-control" id="refresh"  type="button" style="margin-left: auto; margin-right: auto;"  value="Refrescar">
-            </div>
-        </div>
-    </div>
-    
+ 
 {% endblock %}
 

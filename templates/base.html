@@ -18,13 +18,15 @@
     {% block js %} {% endblock %}
 
 </head>
-<body>
+<body >
     <header>
         {% block header %}
         {% endblock %}
     </header>
-    {% block contenido %}
-    {% endblock %}
+    <section class="animation-area">
+        {% block contenido %}
+        {% endblock %}
+    </section>
     <footer>
         {% block footer %}
         {% endblock %}
